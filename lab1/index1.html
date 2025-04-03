@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Księgarnia Słowo</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 <header>
 <!--tytuł strony-->
-<h1>Słowo</h1>
+<h1>Słowo<img src="books.jpg"  class="icon"></h1>
 
 <!--nawigacja-->
 <nav>
@@ -20,15 +21,24 @@
     </ul>
 </nav>
 
+
+</header>
+
+<main>
+<h2>
+		<!--wyszukiwanie-->
 		<div class="search-bar">
             <input type="text" id="search" placeholder="Wyszukaj..." oninput="filterItems()">
             <button onclick="search()">Wyszukaj</button>
         </div>
-		
+		<!--filtry-->
 		<div class="filters">
+		<label>Filtry</label>
+		<!--suwak cena-->
 		<label for="priceFilter">Cena: <span id="priceValue">50</span> zł</label>
             <input type="range" id="priceFilter" min="0" max="1000" value="50" oninput="updatePrice(); filter()">
 		</label>
+		<!--opcje okładka-->
 		 <label for="coverFilter">Okładka:</label>
             <select id="coverFilter" onchange="filter()">
                 <option value="">Wybierz rodzaj okładki</option>
@@ -36,47 +46,49 @@
                 <option value="Twarda">Twarda</option>
             </select>
 	 
-		
+		<!--opcje autor-->
 		 <label for="authorFilter">Autor:</label>
             <select id="authorFilter" onchange="filter()">
                 <option value="">Wybierz autora</option>
-                <option value="Autor 1">Autor 1</option>
-                <option value="Autor 2">Autor 2</option>
-                <option value="Autor 3">Autor 3</option>
+                <option value="Autor 1">Thomas H. Cormen</option>
+                <option value="Autor 2">Janusz Biernat</option>
+                <option value="Autor 3">Hideo Nitta</option>
             </select>
-			
-		<label for="priceFilter">Liczba stron: <span id="priceValue">300</span> stron</label>
+		<!--suwak strony-->
+		<label for="pageFilter">Liczba stron: <span id="priceValue">300</span> stron</label>
             <input type="range" id="priceFilter" min="30" max="5000" value="300" oninput="updatePrice(); filter()">
 		</label>
 		</div>
-		
+		<!--wyszukaj słowa kluczowe-->
 		<div class="keywords">
             <input type="text" id="search" placeholder="Słowa kluczowe" oninput="filterItems()">
             <button onclick="search()">Wyszukaj</button>
         </div>
-
-</header>
-
-<p>To jest strona główna</p>
-
-<main>
+		</h2>
+<!--wybitna literatura-->
 <div class="items" id="items">
     
             <div class="item" data-author="Thomas H. Cormen" data-price="90">
 			Wprowadzenie do algorytmów
 			- Thomas H. Cormen -
-			90 zł</div>
-			<img src="Cormen.jpg" alt="Wprowadzenie do algorytmów">
+			90 zł
+			<img src="Cormen.jpg" alt="Wprowadzenie do algorytmów" class="img">
+			</div>
+			
             <div class="item" data-author="Janusz Biernat" data-price="20">
 			Arytmetyka komputerów
 			- Janusz Biernat
-			- 20 zł</div>
-			<img src="Biernat.jpg" alt="Arytmetyka komputerów">
+			- 20 zł
+			<img src="Biernat.jpg" alt="Arytmetyka komputerów" class="img">
+			</div>
+			
             <div class="item" data-author="Hideo Nitta" data-price="80">
 			The Manga Guide. Fizyka
 			- Hideo Nitta
-			- 80 zł</div>
-			<img src="Fizyka.jpg" alt="Arytmetyka komputerów">
+			- 80 zł
+			<img src="Fizyka.jpg" alt="The Manga Guide. Fizyka" class="img">
+			</div>
+			
         </div>
 
 </main>

@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Dodawanie książki</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 <header>
+
 <!--tytuł strony-->
-<h1>Słowo</h1>
+<h1>Słowo<img src="books.jpg"  class="icon"></h1>
 <h2>Dodawanie książki</h2>
 
 <!--nawigacja-->
@@ -20,8 +22,24 @@
         <li><a href="#">Logowanie</a></li>
     </ul>
 </nav>
-
-
 </header>
+<!--opcje dodawanej książki-->
+<div class="features">
+<div>
+<label>Nazwa książki: </label>
+<input type="text" id="title" name="title" placeholder="Wpisz tytuł książki">
+</div>
+<div>
+<label>Autor: </label>
+<input type="text" id="author" name="author" placeholder="Wpisz autora książki">
+</div>
+<div>
+<label>Cena: </label>
+<input type="text" id="price" name="price" placeholder="Wpisz cenę książki">
+</div>
+<div>
+<button onclick="add()">Dodaj książkę</button>
+</div>
+</div>
 </body>
 </html>
