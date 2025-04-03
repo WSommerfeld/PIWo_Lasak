@@ -20,12 +20,64 @@
     </ul>
 </nav>
 
+		<div class="search-bar">
+            <input type="text" id="search" placeholder="Wyszukaj..." oninput="filterItems()">
+            <button onclick="search()">Wyszukaj</button>
+        </div>
+		
+		<div class="filters">
+		<label for="priceFilter">Cena: <span id="priceValue">50</span> zł</label>
+            <input type="range" id="priceFilter" min="0" max="1000" value="50" oninput="updatePrice(); filter()">
+		</label>
+		 <label for="coverFilter">Okładka:</label>
+            <select id="coverFilter" onchange="filter()">
+                <option value="">Wybierz rodzaj okładki</option>
+                <option value="Miękka">Miękka</option>
+                <option value="Twarda">Twarda</option>
+            </select>
+	 
+		
+		 <label for="authorFilter">Autor:</label>
+            <select id="authorFilter" onchange="filter()">
+                <option value="">Wybierz autora</option>
+                <option value="Autor 1">Autor 1</option>
+                <option value="Autor 2">Autor 2</option>
+                <option value="Autor 3">Autor 3</option>
+            </select>
+			
+		<label for="priceFilter">Liczba stron: <span id="priceValue">300</span> stron</label>
+            <input type="range" id="priceFilter" min="30" max="5000" value="300" oninput="updatePrice(); filter()">
+		</label>
+		</div>
+		
+		<div class="keywords">
+            <input type="text" id="search" placeholder="Słowa kluczowe" oninput="filterItems()">
+            <button onclick="search()">Wyszukaj</button>
+        </div>
 
 </header>
 
 <p>To jest strona główna</p>
 
 <main>
+<div class="items" id="items">
+    
+            <div class="item" data-author="Thomas H. Cormen" data-price="90">
+			Wprowadzenie do algorytmów
+			- Thomas H. Cormen -
+			90 zł</div>
+			<img src="Cormen.jpg" alt="Wprowadzenie do algorytmów">
+            <div class="item" data-author="Janusz Biernat" data-price="20">
+			Arytmetyka komputerów
+			- Janusz Biernat
+			- 20 zł</div>
+			<img src="Biernat.jpg" alt="Arytmetyka komputerów">
+            <div class="item" data-author="Hideo Nitta" data-price="80">
+			The Manga Guide. Fizyka
+			- Hideo Nitta
+			- 80 zł</div>
+			<img src="Fizyka.jpg" alt="Arytmetyka komputerów">
+        </div>
 
 </main>
 
