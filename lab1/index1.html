@@ -9,7 +9,7 @@
 <body>
 <header>
 <!--tytuł strony-->
-<h1>Słowo<img src="books.jpg"  class="icon"></h1>
+<h1>Słowo<img src="books.jpg" alt="Quill" class="icon"></h1>
 
 <!--nawigacja-->
 <nav>
@@ -37,7 +37,7 @@
 		<!--suwak cena-->
 		<label for="priceFilter">Cena: <span id="priceValue">50</span> zł</label>
             <input type="range" id="priceFilter" min="0" max="1000" value="50" oninput="updatePrice(); filter()">
-		</label>
+		
 		<!--opcje okładka-->
 		 <label for="coverFilter">Okładka:</label>
             <select id="coverFilter" onchange="filter()">
@@ -55,9 +55,9 @@
                 <option value="Hideo Nitta">Hideo Nitta</option>
             </select>
 		<!--suwak strony-->
-		<label for="pageFilter">Liczba stron: <span id="priceValue">300</span> stron</label>
+		<label for="pageFilter">Liczba stron: <span id="pageValue">300</span> stron</label>
             <input type="range" id="pageFilter" min="30" max="5000" value="300" oninput="updatePrice(); filter()">
-		</label>
+		
 		</div>
 		<!--wyszukaj słowa kluczowe-->
 		<div class="keywords">
