@@ -41,7 +41,7 @@ nav ul li a {
 }
 
 /*style dla filtrów i ich elementów*/
-h2 {
+.searching {
 	font-size: 20px;
 	background-color: #F5FFFA; /*LightSkyBlue*/
     padding: 20px;

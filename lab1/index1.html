@@ -25,7 +25,7 @@
 </header>
 
 <main>
-<h2>
+<div class = "searching">
 		<!--wyszukiwanie-->
 		<div class="search-bar">
             <input type="text" id="search" placeholder="Wyszukaj..." oninput="filterItems()">
@@ -56,15 +56,15 @@
             </select>
 		<!--suwak strony-->
 		<label for="pageFilter">Liczba stron: <span id="priceValue">300</span> stron</label>
-            <input type="range" id="priceFilter" min="30" max="5000" value="300" oninput="updatePrice(); filter()">
+            <input type="range" id="pageFilter" min="30" max="5000" value="300" oninput="updatePrice(); filter()">
 		</label>
 		</div>
 		<!--wyszukaj słowa kluczowe-->
 		<div class="keywords">
-            <input type="text" id="search" placeholder="Słowa kluczowe" oninput="filterItems()">
+            <input type="text" id="searchKey" placeholder="Słowa kluczowe" oninput="filterItems()">
             <button onclick="search()">Wyszukaj</button>
         </div>
-		</h2>
+</div>
 <!--wybitna literatura-->
 <div class="items" id="items">
     
