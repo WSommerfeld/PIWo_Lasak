@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDo List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="start()">
+  <h1>My ToDo List</h1>
+
+  
+  <input type="text" id="todoInput" placeholder="Nowe zadanie">
+  <button onclick="addTodo()">Dodaj</button>
+
+  <ul id="todoList"></ul>
+
+
+
+  <!--zad.6 -->
+    <div id="Modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Czy na pewno chcesz usunąć zadanie o treści: <span id="taskText"></span>?</p>
+      <button id="confirmDelete">Tak, usuń</button>
+      <button id="cancelDelete">Anuluj</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
