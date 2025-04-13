@@ -1,9 +1,12 @@
+"use strict";
+
 //kosz (let, a nie const, bo przypisujemy różne obiekty)
 let bin = [];
 
 
 //zmienne dla modalu (zad.6)
 let taskToDelete = null; //także let, bo przypisujemy różne taski
+
 const deleteModal = document.getElementById("Modal");
 const confirmDeleteBtn = document.getElementById("confirmDelete");
 const cancelDeleteBtn = document.getElementById("cancelDelete");
@@ -12,9 +15,10 @@ const closeModalBtn = document.querySelector(".close");
 
 //dodawanie nowego zadania (zad.1)
 function addTodo() {
+	
   const input = document.getElementById("todoInput");
   const text = input.value.trim();
-
+	
   if (text === "") {
     alert("Puste zadanie!");
     return;
@@ -45,6 +49,7 @@ function addTodo() {
 
   //obsługa kosza (tylko 1 element)
   removeBtn.addEventListener("click", () => {
+	//przeniesiono do obsługi modala
     //bin.pop();
     //bin.push({
       //li: li,
@@ -84,9 +89,12 @@ function addTodo() {
 
 // zaznaczanie/odznaczanie (zad.2)
 function mark(li, taskText, checkbox) {
+	
   const existingDate = li.querySelector(".date");
+  
 	//uzmiennienie przycisku, żeby dodawanie daty nie rozjeżdżało wszystkiego po wystylowaniu w css
 	const removeBtn = li.querySelector("button");
+	
 	//skreślenie
   if (checkbox.checked) {
     taskText.style.textDecoration = "line-through";
@@ -165,6 +173,7 @@ function back() {
 
   
     li.classList.add("restored");
+	//dodatkowa klasa do stylowania w css
   }
 }
 
@@ -186,7 +195,7 @@ confirmDeleteBtn.onclick = function () {
   if (taskToDelete) {
     const checkbox = taskToDelete.querySelector("input[type='checkbox']");
     const taskText = taskToDelete.querySelector("span");
-	bin.pop();
+	bin.pop();//czyszczenie kosza, aby znajdował się w nim tylko jeden element
     bin.push({
       li: taskToDelete,
       checked: checkbox.checked,
