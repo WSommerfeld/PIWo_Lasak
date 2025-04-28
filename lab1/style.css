@@ -109,6 +109,18 @@ nav ul li a {
     align-items: center;
 }
 
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrowanie filtrów w pionie */
+  justify-content: center; /* Centrowanie filtrów w poziomie */
+  margin: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px; /* Maksymalna szerokość kontenera filtrów */
+  margin-left: auto;
+  margin-right: auto;
+}
 
 
 
