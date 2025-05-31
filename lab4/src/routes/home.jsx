@@ -3,15 +3,20 @@ import '../style.css';
 import Navbar from '../components/Navbar';
 import BookList from '../components/BookList';
 import Filter from '../components/Filter';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+
+import AddBookForm from '../components/AddBookForm';
 
 function Home() {
   const [books, setBooks] = useState([]);
   const [authors, setAuthors] = useState([]);
   const [user, setUser] = useState(null);
+  
+  const [bookToEdit, setBookToEdit] = useState(null);
+
 
   const [filters, setFilters] = useState({
     keyword: '',
@@ -63,6 +68,40 @@ function Home() {
       (!filters.moje || (user && book.userid === user.email))
     );
   });
+  
+  
+  const deleteBook = async (id) => {
+  try {
+    await deleteDoc(doc(db, 'books', id));
+    alert('Książka została usunięta.');
+    setBooks(prev => prev.filter(book => book.id !== id));
+  } catch (error) {
+    console.error('Błąd przy usuwaniu książki:', error);
+    alert('Wystąpił błąd podczas usuwania.');
+  }
+};
+
+
+
+const updateBook = async (id, updatedData) => {
+  try {
+    const bookRef = doc(db, 'books', id);
+    await updateDoc(bookRef, updatedData);
+    alert('Książka została zaktualizowana.');
+
+    
+    setBooks(prevBooks =>
+      prevBooks.map(book => (book.id === id ? { ...book, ...updatedData } : book))
+    );
+
+   
+    setBookToEdit(null);
+  } catch (error) {
+    console.error('Błąd podczas aktualizacji książki:', error);
+    alert('Wystąpił błąd podczas aktualizacji książki.');
+  }
+};
+
 
   return (
     <>
@@ -78,7 +117,20 @@ function Home() {
       <main>
         <div className="searching">
           <Filter filters={filters} updateFilter={updateFilter} authors={authors} user={user} />
-          <BookList books={filteredBooks} />
+          <BookList
+  books={filteredBooks}
+  currentUserId={user?.email}
+  onEdit={(book) => setBookToEdit(book)} 
+  onDelete={deleteBook}
+/>
+{bookToEdit && (
+  <AddBookForm
+    bookToEdit={bookToEdit}
+    onUpdateBook={updateBook}
+    onCancelEdit={() => setBookToEdit(null)}
+  />
+)}
+
         </div>
       </main>
     </>
