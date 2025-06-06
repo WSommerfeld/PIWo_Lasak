@@ -2,7 +2,7 @@ import React from 'react';
 
 /*lista książek z bazy, zamiast kontekstu*/
 const BookList = ({ books, currentUserId, onEdit, onDelete }) => {
-  if (!books.length) return <p>Brak książek do wyświetlenia</p>;
+  if (!books || !Array.isArray(books)|| books.length === 0) return <p>Brak książek do wyświetlenia</p>;
 
   return (
     <div className="items">

@@ -3,7 +3,7 @@ import '../style.css';
 import Navbar from '../components/Navbar';
 import BookList from '../components/BookList';
 import Filter from '../components/Filter';
-import { collection, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, deleteDoc, updateDoc, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -81,7 +81,24 @@ function Home() {
   }
 };
 
+const addBook = async (newBook) => {
+  try {
+    const bookToAdd = {
+      ...newBook,
+      cover: 'blank.png', 
+      pages: 0, 
+      userid: user?.email || '', 
+    };
 
+    const docRef = await addDoc(collection(db, 'books'), bookToAdd);
+    
+    setBooks(prev => [...prev, { id: docRef.id, ...bookToAdd }]);
+    alert('Książka została dodana.');
+  } catch (error) {
+    console.error('Błąd przy dodawaniu książki:', error);
+    alert('Wystąpił błąd podczas dodawania książki.');
+  }
+};
 
 const updateBook = async (id, updatedData) => {
   try {
@@ -123,13 +140,13 @@ const updateBook = async (id, updatedData) => {
   onEdit={(book) => setBookToEdit(book)} 
   onDelete={deleteBook}
 />
-{bookToEdit && (
+{bookToEdit ? (
   <AddBookForm
     bookToEdit={bookToEdit}
     onUpdateBook={updateBook}
     onCancelEdit={() => setBookToEdit(null)}
   />
-)}
+) : null}
 
         </div>
       </main>
